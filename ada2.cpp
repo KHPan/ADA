@@ -18,16 +18,13 @@
 using namespace std;
 
 vector<vector<int>> adj;
-vector<int> depth, to_depth, children;
-vector<int> groups;
-ll ans;
-int art_cnt;
+vector<int> depth, to_depth;
+vector<bool> is_art;
 void dfs(int v, int d) {
 	depth[v] = d;
 	to_depth[v] = d;
-	children[v] = 1;
 
-	bool me_art = false, root = (d == 0);
+	bool root = (d == 0);
 	for (auto u : adj[v]) {
 		if (depth[u] == -1) {
 			dfs(u, d+1);
@@ -35,20 +32,23 @@ void dfs(int v, int d) {
 			if (to_depth[u] >= d) {
 				if (root)
 					root = false;
-				else {
-					groups.push_back(children[u]);
-					me_art = true;
-				}
-			} else
-				children[v] += children[u];
+				else
+					is_art[v] = true;
+			}
 		}
 		else
 			to_depth[v] = min(to_depth[v], depth[u]);
 	}
-	if (me_art) {
-		children[v]--;
-		art_cnt++;
+}
+ll dfs2(int v) {
+	is_art[v] = true;
+	ll ret = 1;
+	for (auto u : adj[v]) {
+		if (!is_art[u]) {
+			ret += dfs2(u);
+		}
 	}
+	return ret;
 }
 long long solve(int n, int m, std::vector<int> &u, std::vector<int> &v) {
 	adj.clear(); adj.resize(n);
@@ -58,23 +58,14 @@ long long solve(int n, int m, std::vector<int> &u, std::vector<int> &v) {
 	}
 	depth.clear(); depth.resize(n, -1);
 	to_depth.clear(); to_depth.resize(n);
-	children.clear(); children.resize(n);
-	groups.clear();
-	art_cnt = 0;
+	is_art.clear(); is_art.resize(n, false);
 	dfs(0, 0);
 	ans = n * (n-1) / 2;
-	// int rest = adj.size();
-	// while (art_cnt--) {
-	// 	rest--;
-	// 	ans += rest;
-	// }
-	// for (auto g : groups) {
-	// 	ans += (ll)g * (rest - g);
-	// 	rest -= g;
-	// }
-	groups.push_back(n - art_cnt - accumulate(groups.begin(), groups.end(), 0));
-	for (auto g : groups) {
-		ans -= (ll)g * (g - 1) / 2;
+	for (int i = 0; i < n; i++) {
+		if (!is_art[i]) {
+			ll x = dfs2(i);
+			ans -= x * (x-1) / 2;
+		}
 	}
 	return ans;
 }
