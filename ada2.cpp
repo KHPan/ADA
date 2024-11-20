@@ -60,7 +60,7 @@ long long solve(int n, int m, std::vector<int> &u, std::vector<int> &v) {
 	to_depth.clear(); to_depth.resize(n);
 	is_art.clear(); is_art.resize(n, false);
 	dfs(0, 0);
-	ans = n * (n-1) / 2;
+	ll ans = n * (n-1) / 2;
 	for (int i = 0; i < n; i++) {
 		if (!is_art[i]) {
 			ll x = dfs2(i);
