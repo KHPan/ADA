@@ -20,7 +20,7 @@ for count in range(T):
 	G.remove_nodes_from(nx.articulation_points(G))
 	P_ans = N * (N-1) // 2
 	for g in nx.connected_components(G):
-		P_ans -= g.number_of_nodes() * (g.number_of_nodes()-1) // 2
+		P_ans -= len(g) * (len(g)-1) // 2
 	if C_ans == P_ans:
 		print(f"Correct {count+1}/{T}")
 	else:
