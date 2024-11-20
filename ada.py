@@ -3,9 +3,10 @@ import random
 import os
 
 T = int(input())
+N_MAX = 15
 for count in range(T):
-	N = random.randint(1, 10)
-	M = random.randint(N-1, min(N*(N-1)//2, 30))
+	N = random.randint(1, N_MAX)
+	M = random.randint(N-1, min(N*(N-1)//2, N_MAX * 3))
 	G = nx.gnm_random_graph(N, M)
 	while not nx.is_connected(G):
 		G = nx.gnm_random_graph(N, M)
