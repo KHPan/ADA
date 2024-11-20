@@ -1,4 +1,7 @@
+#ifndef DEBUG
 #define DEBUG
+#endif // DEBUG
+
 #ifndef DEBUG
 #include "p8_6.h"
 #endif

@@ -1,4 +1,7 @@
-//  #define DEBUG
+#ifndef DEBUG
+#define DEBUG
+#endif // DEBUG
+
 #ifndef DEBUG
 #include "p8_5.h"
 #endif
