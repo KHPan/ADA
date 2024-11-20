@@ -3,7 +3,7 @@ import random
 import os
 
 T = int(input())
-N_MAX = 30
+N_MAX = 100
 for count in range(T):
 	N = random.randint(1, N_MAX)
 	M = random.randint(N-1, min(N*(N-1)//2, N_MAX * 3))
