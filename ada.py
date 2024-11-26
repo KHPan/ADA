@@ -3,8 +3,8 @@ import random
 import os
 
 T = int(input("要跑幾次? "))
-N_MAX = 200
-C_MAX = 1000
+N_MAX = 10
+C_MAX = 30
 for count in range(T):
 	N = random.randint(2, N_MAX)
 	M = random.randint(1, N_MAX)
