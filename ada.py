@@ -26,7 +26,7 @@ for count in range(T):
 	with open("output.txt") as f:
 		C_ans = int(f.readline())
 
-	H = G.DiGraph()
+	H = nx.DiGraph()
 	for u, v, c in G.edges(data="capacity"):
 		H.add_edge(f"{u}out", f"{v}in", capacity=c)
 	for n, c in G.nodes(data="capacity"):
