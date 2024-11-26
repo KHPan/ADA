@@ -2,9 +2,10 @@ import networkx as nx
 import random
 import os
 
-T = int(input("要跑幾次? "))
-N_MAX = 20
-C_MAX = 30
+inp = input("(T、N、C) = ").split()
+T = int(inp[0])
+N_MAX = int(inp[1])
+C_MAX = int(inp[2])
 for count in range(T):
 	N = random.randint(2, N_MAX)
 	M = random.randint(1, N_MAX)
