@@ -65,9 +65,9 @@ int Maximum_Flow(int n, std::vector<std::pair<int, int>>& edges,
 	while (dfs(s)) {
 		#ifdef DEBUG
 		for (int i = 0; i < path.size(); i++) {
-			cout << path[i] << " ";
+			cerr << path[i] << " ";
 		}
-		cout << endl;
+		cerr << endl;
 		#endif
 		int min_flow = INT_MAX;
 		for (int i = 0; i < path.size() - 1; i++) {
