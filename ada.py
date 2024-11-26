@@ -2,14 +2,14 @@ import networkx as nx
 import random
 import os
 
-T = int(input())
+T = int(input("要跑幾次? "))
 N_MAX = 200
 C_MAX = 1000
 for count in range(T):
 	N = random.randint(2, N_MAX)
 	M = random.randint(1, N_MAX)
 	G = nx.gnm_random_graph(N, M, directed=True)
-	G.relabel_nodes({0: N})
+	G = nx.relabel_nodes(G, {0: N})
 	for n in G.nodes():
 		if n in (1, N):
 			G.nodes[n]["capacity"] = 1000000000
