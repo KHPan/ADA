@@ -44,7 +44,7 @@ bool dfs(int cur) {
 }
 int Maximum_Flow(int n, std::vector<std::pair<int, int>>& edges,
         std::vector<int> capv, std::vector<int> cape) {
-	if (n == 2) {
+	if (n == 1) {
 		return 0;
 	}
 	N = n * 2;
