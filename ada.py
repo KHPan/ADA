@@ -19,7 +19,7 @@ for count in range(T):
 		G.edges[e]["capacity"] = random.randint(1, C_MAX)
 	with open("input.txt", "w") as f:
 		f.write(f"{N} {M}\n")
-		f.write(" ".join(G.nodes[i] for i in range(2, N-1)) + "\n")
+		f.write(" ".join(str(G.nodes[i]["capacity"]) for i in range(2, N-1)) + "\n")
 		for u, v, c in G.edges(data="capacity"):
 			f.write(f"{u} {v} {c}\n")
 	os.system("./ada < input.txt > output.txt")
