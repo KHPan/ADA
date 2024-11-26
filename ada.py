@@ -3,7 +3,7 @@ import random
 import os
 
 T = int(input("要跑幾次? "))
-N_MAX = 10
+N_MAX = 20
 C_MAX = 30
 for count in range(T):
 	N = random.randint(2, N_MAX)
